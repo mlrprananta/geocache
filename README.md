@@ -1,5 +1,5 @@
-# Bucketed Geolocation Cache
-In-memory cache for storing geolocated data for Deno.
+# geocache
+In-memory cache for storing bucketed geolocation data for Deno.
 
 ## Use Case
 
