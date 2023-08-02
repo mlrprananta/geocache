@@ -16,20 +16,20 @@ export class GeolocationCache<V> {
     this.#interval = interval;
   }
 
-  get(lon: number, lat: number) {
-    const key = this.#computeKey(lon, lat);
+  get(lat: number, lon: number) {
+    const key = this.#computeKey(lat, lon);
     return this.#cache.get(key);
   }
 
-  put(lon: number, lat: number, value: V) {
-    const key = this.#computeKey(lon, lat);
+  put(lat: number, lon: number, value: V) {
+    const key = this.#computeKey(lat, lon);
     this.#cache.put(key, value);
   }
 
-  #computeKey(lon: number, lat: number): string {
-    const lonBucket = Math.floor((lon + 180) / this.#interval);
+  #computeKey(lat: number, lon: number): string {
     const latBucket = Math.floor((lat + 90) / this.#interval);
-    const key = `${lonBucket.toString()}-${latBucket.toString()}`;
+    const lonBucket = Math.floor((lon + 180) / this.#interval);
+    const key = `${latBucket.toString()}-${lonBucket.toString()}`;
     return key;
   }
 }

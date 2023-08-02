@@ -40,8 +40,8 @@ Deno.test({
   name: "test cache hit edge case",
   fn() {
     const cache: GeolocationCache<string> = new GeolocationCache(0.3124);
-    cache.put(180, 90, "value");
-    assertStrictEquals(cache.get(179.8848, 89.9424), "value");
+    cache.put(90, 180, "value");
+    assertStrictEquals(cache.get(89.9424, 179.8848), "value");
   },
 });
 
@@ -49,7 +49,7 @@ Deno.test({
   name: "test cache miss edge case",
   fn() {
     const cache: GeolocationCache<string> = new GeolocationCache(0.3124);
-    cache.put(180, 90, "value");
-    assertStrictEquals(cache.get(179.8847, 89.9423), undefined);
+    cache.put(90, 180, "value");
+    assertStrictEquals(cache.get(89.9423, 179.8848), undefined);
   },
 });
