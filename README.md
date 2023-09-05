@@ -4,7 +4,7 @@ In-memory cache for storing bucketed geolocation data in Deno.
 
 # Usage
 
-```
+```ts
 import { GeolocationCache } from "https://deno.land/x/geocache/mod.ts";
 
 const cache = new GeolocationCache<string>(1);
