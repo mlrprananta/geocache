@@ -10,7 +10,7 @@ export class TtlCache<K, V> implements Cache<K, V> {
   #ttl: number;
 
   /**
-   * @param ttl Time-to-live in seconds.
+   * @param ttl Time-to-live in seconds before an item is evicted.
    */
   constructor(ttl: number) {
     this.#items = new Map();
@@ -31,7 +31,10 @@ export class TtlCache<K, V> implements Cache<K, V> {
   }
 
   put(key: K, value: V) {
-    this.#items.set(key, { value: value, ttl: Date.now() + this.#ttl * 1e3 });
+    this.#items.set(key, {
+      value: value,
+      ttl: Date.now() + this.#ttl * 1e3,
+    });
   }
 
   delete(key: K) {

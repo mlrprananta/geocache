@@ -5,14 +5,15 @@ export class GeolocationCache<V> {
   #interval: number;
 
   /**
-   * @param interval The interval in degrees which determines
-   * the size of the greticule block and the range of the bucket.
-   * A lower interval value increases accuracy of geolocated data,
-   * but also increases the number
+   * @param interval Interval in degrees which determines the size of the
+   * greticule block and the range of the bucket. A lower interval value
+   * increases the accuracy of geolocated data, but also increases the number
    * of buckets in the cache.
+   * @param [ttl=3600] Time-to-live in seconds before an item is evicted. 
+   * Default is set to one hour (3600 seconds).
    */
-  constructor(interval: number) {
-    this.#cache = new TtlCache(60 * 60);
+  constructor(interval: number, ttl = 3600) {
+    this.#cache = new TtlCache(ttl);
     this.#interval = interval;
   }
 
